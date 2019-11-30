@@ -1,9 +1,9 @@
 package main
 
 import (
-	"cortago/examples/controller"
+	"Examples/basic-example/controller"
 
-	"cortago/router"
+	"github.com/cortago/cortago/router"
 )
 
 func main() {
