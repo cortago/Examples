@@ -5,6 +5,7 @@ import (
 	"net/url"
 
 	"github.com/cortago/cortago/controller"
+	"github.com/cortago/cortago/router"
 )
 
 type MainController struct {
@@ -14,6 +15,14 @@ type MainController struct {
 type Person struct {
 	Name   string
 	Emails []string
+}
+
+var Main = router.New()
+
+func init(){
+	mainController := MainController{}
+	mainController.Name = "Main Controller"
+	Main.Handle("/index", mainController.Index)
 }
 
 func (c *MainController) Index(w http.ResponseWriter, r *http.Request, params url.Values) {

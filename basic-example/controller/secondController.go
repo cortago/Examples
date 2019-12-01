@@ -5,10 +5,20 @@ import (
 	"net/url"
 
 	"github.com/cortago/cortago/controller"
+	"github.com/cortago/cortago/router"
 )
 
 type SecondController struct {
 	controller.Controller
+}
+
+var Second = router.New()
+
+func init(){
+	secondController := SecondController{}
+	secondController.Name = "Second Controller"
+	Second.Handle("/index", secondController.Index)
+	Second.Handle("/list", secondController.List)
 }
 
 func (c *SecondController) Index(w http.ResponseWriter, r *http.Request, params url.Values) {
